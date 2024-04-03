@@ -3,15 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import categorySlice from "./Redux/slices/category/categorySlice";
 
-const store = configureStore({
-  reducer: {
-    categoryReducer: categorySlice,
-  },
-});
+import { Provider } from "react-redux";
+import { store } from "./Redux/slices/store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
