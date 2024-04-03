@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import "./_top-nav.scss";
 
 const TopNav = () => {
+  const cartItemCount = useSelector((state) => state.cr.totalItems);
   return (
     <div>
       <div className="header bg-dark">
@@ -38,7 +40,15 @@ const TopNav = () => {
                 <i className="fa fa-heart"></i>
               </li>
               <li className="list-icon">
-                <i className="fa fa-shopping-cart"></i>
+                <i className="fa fa-shopping-cart">
+                  {cartItemCount !== 0 ? (
+                    <div id="cart-item-count">
+                      <p>{cartItemCount}</p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </i>
               </li>
             </ul>
           </div>

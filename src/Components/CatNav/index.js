@@ -5,14 +5,12 @@ import "./_cat-nav.scss";
 
 const CatNav = () => {
   const categories = useSelector((state) => state.categoryReducer.categories);
-  console.log(categories);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, []);
-
-  console.log(categories);
 
   return (
     <>
