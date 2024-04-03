@@ -1,28 +1,14 @@
 const express = require("express");
+const productCategories = require("./Routes/productCategories");
 const app = express();
-const mysql = require("mysql2");
+const cors = require("cors");
 
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "password9898@",
-  database: "estore2",
-  port: 3306,
-  multipleStatements: true,
-});
+app.use(cors());
 
-app.get("/", (req, res) => {
-  pool.getConnection((err, connection) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send("Connection Established");
-    }
-  });
-});
+app.use("/productCategories", productCategories);
 
-const PORT = 5003;
+const PORT = 5000;
 
 const server = app.listen(PORT, () => {
-  console.log("App is running on the port 5003");
+  console.log("App running on port 5000");
 });

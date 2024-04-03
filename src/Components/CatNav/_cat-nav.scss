@@ -1,5 +1,5 @@
 .cat-nav-container {
-  background-color: #1e1e1e;
+  background-color: gray;
   max-width: 100%;
   border-top: #444444 solid 1px;
 
@@ -9,6 +9,7 @@
     margin: 0.2em 1em;
     padding: 0.4em;
     height: 2.5em;
+    color: white;
     a {
       text-decoration: none;
       color: white;
