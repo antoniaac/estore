@@ -11,7 +11,7 @@ const CatNav = () => {
   useEffect(() => {
     dispatch(getCategories());
   }, []);
-
+  console.log(categories);
   return (
     <>
       <div className="cat-nav-container container">

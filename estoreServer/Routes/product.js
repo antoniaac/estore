@@ -6,7 +6,7 @@ const pool = mysql2.createPool({
   host: "localhost",
   user: "root",
   password: "password9898@",
-  database: "mainestore",
+  database: "myshop",
   port: 3306,
   multipleStatements: true,
 });

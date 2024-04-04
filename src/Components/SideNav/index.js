@@ -1,19 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
-import accordionSlice from "../../Redux/slices/accordionSlice";
-import "./_side-nav.scss";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { getCategories } from "../../Redux/slices/category/actions";
+import "./_side-nav.scss";
+import { filterProducts } from "../../Redux/slices/Products/productSlice";
 
 const SideNav = () => {
   const accordionData = useSelector(
     (state) => state.categoryReducer.categories
   );
+  const fetchedProductData = useSelector((state) => state.pr);
+  const [products, setProducts] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, []);
+  useEffect(() => {
+    setProducts(fetchedProductData.products);
+  }, [fetchedProductData.status]);
 
+  const filterData = (selectedCategory) => {
+    const payload = { selectedCategory, products };
+    dispatch(filterProducts(payload));
+  };
   return (
     <div className="side-nav">
       <div className="section-title">
@@ -42,6 +52,7 @@ const SideNav = () => {
                 >
                   <div className="accordion-body">
                     <ul>
+                      {console.log(accordionData)}
                       {accordionData.map((subCategory) => {
                         if (
                           accordionCategory.id ===
@@ -50,7 +61,12 @@ const SideNav = () => {
                           return (
                             <li className="sub-items">
                               {" "}
-                              <a href="#">{subCategory.category}</a>{" "}
+                              <a
+                                href="#"
+                                onClick={() => filterData(subCategory)}
+                              >
+                                {subCategory.category}
+                              </a>{" "}
                             </li>
                           );
                         }

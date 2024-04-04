@@ -10,7 +10,15 @@ const initialState = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    filterProducts: (state, action) => {
+      const filteredData = action.payload.products.filter((elem) => {
+        return elem.category_id === action.payload.selectedCategory.id;
+      });
+      state.products = filteredData;
+      console.log(filterProducts);
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getProducts.pending, (state, action) => {
@@ -27,5 +35,7 @@ const productSlice = createSlice({
       });
   },
 });
+
+export const { filterProducts } = productSlice.actions;
 
 export default productSlice.reducer;

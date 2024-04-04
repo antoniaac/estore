@@ -17,7 +17,6 @@ const Products = () => {
   const addToCart = (itemData) => {
     dispatch(addCartItem(itemData));
   };
-  console.log(cart);
 
   return (
     <div className="products-container">
